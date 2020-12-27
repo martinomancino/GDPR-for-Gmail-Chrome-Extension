@@ -1,0 +1,1 @@
+# chrome-extension-gdpr-highlighter
