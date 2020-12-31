@@ -13,7 +13,6 @@ export async function loadGraphModel() {
 }
 
 export async function predict({ model, text }) {
-  // console.log(" Predict text", text);
   const { inputIds, inputMask } = bertTokenizer.convertSingleExample(text);
   // Run model inference
   const result = tf.tidy(() => {
@@ -56,8 +55,6 @@ const reconcileWord = (tokens, index) => {
 const parsePredictionResults = async (results, inputIds) => {
   const resultsIndexed = await tf.softmax(results).squeeze().array();
   const tokens = bertTokenizer.convertIdsToTokens(inputIds);
-
-  console.log("Tokens", tokens);
 
   const parsedResults = resultsIndexed.map((resultArray, resultsIndex) => {
     let word;

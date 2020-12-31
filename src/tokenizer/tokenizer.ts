@@ -151,9 +151,7 @@ class BertTokenizer {
       inputMask.push(0);
       segmentIds.push(0);
     }
-    // console.log('input_ids: ', inputIds);
-    // console.log('input_mask: ', inputMask);
-    // console.log('segmentIds: ', segmentIds);
+
     return { inputIds, segmentIds, inputMask };
   }
 }

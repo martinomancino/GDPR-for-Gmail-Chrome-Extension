@@ -15,10 +15,9 @@ function override(config, env) {
   // Note: you may remove any property below except "popup" to exclude respective entry point from compilation
   config.entry = {
     popup: paths.appIndexJs,
-    options: paths.appSrc + "/options.js",
     background: paths.appSrc + "/background.js",
-    content: paths.appSrc + "/content.js",
     gmail: paths.appSrc + "/gmail.js",
+    highlighter: paths.appSrc + "/highlighter.js",
   };
   // Change output filename template to get rid of hash there
   config.output.filename = "static/js/[name].js";

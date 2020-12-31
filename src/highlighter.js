@@ -1,17 +1,12 @@
 /* eslint-disable no-undef */
 import $ from "jquery";
 import debounce from "debounce";
+import Cookies from "js-cookie";
 import { predict, loadGraphModel } from "./model";
-import {
-  ibanRegex,
-  postcodeRegex,
-  phoneNumberRegex,
-  creditCardRegex,
-  tokenBlacklist,
-  tagsMap,
-} from "./constants";
+import { postcodeRegex, phoneNumberRegex, creditCardRegex } from "./constants";
 
 const initialiseHighlighter = async (container) => {
+  console.log("initialiseHighlighter");
   const model = await loadGraphModel();
   if ($(".backdrop").length === 0) {
     container.append(
@@ -26,10 +21,12 @@ const initialiseHighlighter = async (container) => {
 
   const textAreaSelector = ".AD .iN .Am.Al";
   const $textarea = $(textAreaSelector);
-  const $backdrop = $(".backdrop");
+  // const $backdrop = $(".backdrop");
   const $highlights = $(".highlights");
-  const $tempDomParser = $("#tempDomParser");
-  const $loading = $(".loadingIcon");
+  // const $tempDomParser = $("#tempDomParser");
+  // const $loading = $(".loadingIcon");
+  const isExtentionEnabled = Cookies.get("gdpr-highlighter-enabled");
+  console.log("isExtentionEnabled", isExtentionEnabled);
 
   const getPrediction = (text) => {
     console.log("Start Prediction", new Date(), new Date().getMilliseconds());
@@ -56,8 +53,8 @@ const initialiseHighlighter = async (container) => {
     });
 
     const parsedTextRegex = parsedText
+      .replace(postcodeRegex, '<mark data-entity="I-location">$&</mark>')
       .replace(creditCardRegex, '<mark data-entity="I-sensitive">$&</mark>')
-      .replace(postcodeRegex, '<mark data-entity="I-sensitive">$&</mark>')
       .replace(phoneNumberRegex, '<mark data-entity="I-sensitive">$&</mark>');
 
     return parsedTextRegex;
@@ -77,7 +74,6 @@ const initialiseHighlighter = async (container) => {
 
   const handleInput = async () => {
     $highlights.html($textarea.html());
-    // $loading.show();
     console.log(
       ">>>>>>> HandleInput",
       new Date(),
@@ -92,59 +88,11 @@ const initialiseHighlighter = async (container) => {
       const text = $(this).text();
       applyHighlights(text).then((textEdited) => $(this).html(textEdited));
     });
-
-    // setTimeout(() => {
-    //   // const $highlights = $(".highlights");
-    //   // const $tempDomParser = $("#tempDomParser");
-    //   // const newHtml = $tempDomParser.html();
-    //   $highlights.html(newHtml);
-    //   // $tempDomParser.html("");
-    //   $loading.hide();
-    // });
-
-    // const dataGdprElements = [...document.querySelectorAll(`[data-gdpr]`)];
-
-    // dataGdprElements.map(async (element) => {
-    //   const text = element.innerText;
-    //   await applyHighlights(text).then(
-    //     (textEdited) => (element.innerText = textEdited)
-    //   );
-    //   return element;
-    // });
-
-    // const anAsyncFunction = async (element) => {
-    //   const text = element.innerText;
-    //   return applyHighlights(text).then(
-    //     (textEdited) => (element.innerText = textEdited)
-    //   );
-    // };
-
-    // const processData = async () => {
-    //   return Promise.all(
-    //     dataGdprElements.map((element) => anAsyncFunction(element))
-    //   );
-    // };
-
-    // processData();
-  };
-
-  // const handleScroll = () => {
-  //   var scrollTop = $textarea.scrollTop();
-  //   $backdrop.scrollTop(scrollTop);
-
-  //   var scrollLeft = $textarea.scrollLeft();
-  //   $backdrop.scrollLeft(scrollLeft);
-  // };
-
-  const deleteHighlights = () => {
-    $highlights.html(" ");
-    debounce(handleInput, 1500);
   };
 
   const bindEvents = () => {
     $textarea.on({
       input: debounce(handleInput, 1500),
-      // scroll: handleScroll,
     });
   };
 

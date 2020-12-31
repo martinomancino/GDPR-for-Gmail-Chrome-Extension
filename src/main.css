@@ -47,19 +47,25 @@ mark {
 }
 
 mark[data-entity="B-person"],
-mark[data-entity="I-person"] {
+mark[data-entity="I-person"],
+mark[data-entity="B-PER"],
+mark[data-entity="I-PER"] {
   border-color: rgb(62, 142, 247);
   background-color: rgba(62, 142, 247, 0.3);
 }
 
 mark[data-entity="I-location"],
-mark[data-entity="B-location"] {
-  border-color: rgb(251, 255, 0);
-  background-color: rgba(251, 255, 0, 0.3);
+mark[data-entity="B-location"],
+mark[data-entity="I-LOC"],
+mark[data-entity="B-LOC"] {
+  border-color: rgb(255, 187, 0);
+  background-color: rgba(255, 196, 0, 0.3);
 }
 
 mark[data-entity="I-corporation"],
-mark[data-entity="B-corporation"] {
+mark[data-entity="B-corporation"],
+mark[data-entity="I-ORG"],
+mark[data-entity="B-ORG"] {
   border-color: rgb(115, 240, 74);
   background-color: rgba(115, 240, 74, 0.3);
 }
