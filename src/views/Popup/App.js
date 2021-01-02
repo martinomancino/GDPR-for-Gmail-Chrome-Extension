@@ -9,7 +9,7 @@ import Accordions from "./Accordions";
 import "./App.css";
 
 let currentDomain = "";
-const cookieName = "gdpr-highlighter-enabled";
+const cookieName = "gdpr-for-gmail-enabled";
 let gdprHighlighterEnabled;
 const containerSelector = ".Ar.Au";
 const container = $(containerSelector);
@@ -36,7 +36,7 @@ function sendCookie(value) {
   chrome.tabs.executeScript({
     code:
       'var domain = window.location.hostname.split(".").slice(1).join(".");' +
-      'document.cookie="gdpr-highlighter-enabled=' +
+      'document.cookie="gdpr-for-gmail-enabled=' +
       value +
       "; expires=" +
       expires +

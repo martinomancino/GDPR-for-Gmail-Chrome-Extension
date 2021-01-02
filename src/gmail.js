@@ -2,14 +2,13 @@
 import $ from "jquery";
 import Cookies from "js-cookie";
 import initialiseHighlighter from "./highlighter";
-import "./main.css";
 
 const containerSelector = ".Ar.Au";
 const textAreaSelector = ".AD .iN .Am.Al";
 let initialised = false;
 
-let isExtentionEnabled = Cookies.get("gdpr-highlighter-enabled")
-  ? JSON.parse(Cookies.get("gdpr-highlighter-enabled"))
+let isExtentionEnabled = Cookies.get("gdpr-for-gmail-enabled")
+  ? JSON.parse(Cookies.get("gdpr-for-gmail-enabled"))
   : false;
 
 var initialisation = setInterval(() => {

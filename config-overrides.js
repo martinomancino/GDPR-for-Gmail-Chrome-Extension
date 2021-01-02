@@ -58,18 +58,6 @@ function override(config, env) {
     indexHtmlPlugin
   );
 
-  // Extra HtmlWebpackPlugin instance for options page
-  const optionsHtmlPlugin = new HtmlWebpackPlugin({
-    inject: true,
-    chunks: ["options"],
-    template: paths.appPublic + "/options.html",
-    filename: "options.html",
-    minify: isEnvProduction && minifyOpts,
-  });
-  // Add the above HtmlWebpackPlugin instance into config.plugins
-  // Note: you may remove/comment the next line if you don't need an options page
-  config.plugins.push(optionsHtmlPlugin);
-
   // Custom ManifestPlugin instance to cast asset-manifest.json back to old plain format
   const manifestPlugin = new ManifestPlugin({
     fileName: "asset-manifest.json",

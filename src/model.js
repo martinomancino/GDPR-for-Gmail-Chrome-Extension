@@ -1,5 +1,5 @@
-import { BertTokenizer } from "./tokenizer";
 import * as tf from "@tensorflow/tfjs";
+import { BertTokenizer } from "./tokenizer";
 import { tagsMap, tokenBlacklist } from "./constants";
 import { sortBy } from "lodash";
 
@@ -14,7 +14,7 @@ export async function loadGraphModel() {
 
 export async function predict({ model, text }) {
   const { inputIds, inputMask } = bertTokenizer.convertSingleExample(text);
-  // Run model inference
+
   const result = tf.tidy(() => {
     const inputTensor = tf.tensor([inputIds], undefined, "int32");
     const maskTensor = tf.tensor([inputMask], undefined, "int32");

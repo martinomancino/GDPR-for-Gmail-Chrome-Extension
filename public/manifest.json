@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "version": "0.1.0",
-  "name": "GDPR Data Highlighter 2",
-  "description": "GDPR Data Highlighter Description",
+  "version": "0.0.1",
+  "name": "GDPR for Gmail",
+  "description": "GDPR for Gmail while you are writing an email, highlights data potential protected by the currect GDPR regulation",
   "icons": {
     "48": "icons/icon-48x48.png",
     "128": "icons/icon-128x128.png"
