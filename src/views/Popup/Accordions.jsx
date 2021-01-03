@@ -12,8 +12,8 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
+    fontSize: theme.typography.pxToRem(16),
+    fontWeight: theme.typography.fontWeightBold,
   },
 }));
 
@@ -28,12 +28,40 @@ const Accordions = () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className={classes.heading}>How it works</Typography>
+          <Typography className={classes.heading}>Instructions</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            <ul className="list">
+              <li>Enable the extension with the switch above</li>
+              <li>
+                Check if in the top-right part of the email body, there is this
+                icon
+                <img
+                  className="extensionWatchingIcon"
+                  src="/icons/loading-icon.png"
+                  alt="Watching icon"
+                />
+              </li>
+              <li>
+                If this icon is NOT there, click on the <b>CHECK EMAIL</b>{" "}
+                button below
+              </li>
+              <li>
+                The email content is anaylsed every time you stop typing for 1.5
+                seconds
+              </li>
+              <li>
+                The protected data will be{" "}
+                <mark data-entity="B-PER">highlighted</mark> with{" "}
+                <mark data-entity="B-PII">different colours</mark> depending on
+                the type of data as described in the colours legend below
+              </li>
+              <li>
+                When you think you are ready to provide your feedback please
+                click on the related button below
+              </li>
+            </ul>
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -49,19 +77,13 @@ const Accordions = () => {
           <Typography>
             <div>
               <b>Personal names:</b>{" "}
-              <mark data-entity="B-person">Name Surname</mark>
-            </div>
-            <div>
-              <b>Locations:</b>{" "}
-              <mark data-entity="B-location">Address, Postal Code, City</mark>
-            </div>
-            <div>
-              <b>Businesses: </b>{" "}
-              <mark data-entity="B-corporation">Business Name Ltd.</mark>
+              <mark data-entity="B-PER">
+                Name Surname, Locations, Business Names,{" "}
+              </mark>
             </div>
             <div>
               <b>Sensitive data: </b>{" "}
-              <mark data-entity="I-sensitive">
+              <mark data-entity="B-PII">
                 Phone Number, Credit Card Number, Medical Condition
               </mark>
             </div>
