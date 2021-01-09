@@ -1,20 +1,13 @@
 {
   "manifest_version": 2,
-  "version": "0.0.1",
+  "version": "0.1.1",
   "name": "GDPR for Gmail",
-  "description": "GDPR for Gmail while you are writing an email, highlights data potential protected by the currect GDPR regulation",
+  "description": "GDPR for Gmail highlights personal and sensitive data potentially protected by the currect GDPR regulation.",
   "icons": {
     "48": "icons/icon-48x48.png",
     "128": "icons/icon-128x128.png"
   },
-  "permissions": [
-    "tabs",
-    "storage",
-    "activeTab",
-    "cookies",
-    "background",
-    "https://mail.google.com/*"
-  ],
+  "permissions": ["tabs", "cookies", "background", "https://mail.google.com/*"],
   "background": {
     "scripts": ["static/js/background.js"],
     "css": ["static/css/gmail.css"],
