@@ -4,7 +4,6 @@ const tagsMap = [
   "B-MISC",
   "B-ORG",
   "B-PER",
-  "B-PII",
   "E-DIS",
   "I-DIS",
   "I-LOC",
@@ -21,6 +20,7 @@ const ibanRegex = /(?:IT|SM)\d{2}[A-Z]\d{22}|CY\d{2}[A-Z]\d{23}|NL\d{2}[A-Z]{4}\
 const creditCardRegex = /\b(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})\b/g;
 const postcodeRegex = /(?:[A-Za-z]\d ?\d[A-Za-z]{2})|(?:[A-Za-z][A-Za-z\d]\d ?\d[A-Za-z]{2})|(?:[A-Za-z]{2}\d{2} ?\d[A-Za-z]{2})|(?:[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]{2})|(?:[A-Za-z]{2}\d[A-Za-z] ?\d[A-Za-z]{2})$/g;
 const phoneNumberRegex = /(\(?(0|\+44\s*)\d{4}\)?\s*\d{6}\s*)|(\s*\(?0\d{3}\)?\s*\d{3}\s*\d{4})$/g;
+const emailRegex = /\b\S+@\S+\.\S+\b/g;
 
 const tokenBlacklist = ["[SEP]", "[CLS]", "[PAD]"];
 
@@ -82,6 +82,10 @@ const highlighterCssInjection = `<style id="cssInjection">#backdrop {
   color: transparent !important;
 }
 
+#highlights img, #highlights.hide {
+  opacity: 0;
+}
+
 .Am.Al {
   position: relative;
   z-index: 2;
@@ -122,7 +126,8 @@ mark[data-entity="I-ORG"] {
 mark[data-entity="B-PII"],
 mark[data-entity="I-PII"],
 mark[data-entity="B-DIS"],
-mark[data-entity="I-DIS"] {
+mark[data-entity="I-DIS"],
+mark[data-entity="S-DIS"] {
   border-color: rgb(255, 6, 6);
   background-color: rgba(240, 74, 74, 0.3);
 }
@@ -139,6 +144,17 @@ mark[data-entity="O-DOCSTART-"] {
   width: 30px;
   height: 30px;
 }
+
+#extensionWatchingIconAbsolute.loading {
+  animation: loadingAnimation 1s infinite;
+}
+
+@keyframes loadingAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+
 </style>`;
 
 export {
@@ -146,6 +162,7 @@ export {
   postcodeRegex,
   phoneNumberRegex,
   creditCardRegex,
+  emailRegex,
   tokenBlacklist,
   tagsMap,
   highlighterHtmlInjection,
