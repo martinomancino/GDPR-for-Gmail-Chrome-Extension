@@ -3,12 +3,15 @@ import $ from "jquery";
 import debounce from "debounce";
 import { predict, loadGraphModel } from "./model";
 import {
-  postcodeRegex,
   phoneNumberRegex,
   creditCardRegex,
   highlighterHtmlInjection,
   highlighterCssInjection,
 } from "./constants";
+
+let startedPrediction = false;
+let startDate;
+let endDate;
 
 const initialiseHighlighter = async (container) => {
   const model = await loadGraphModel();
@@ -23,7 +26,12 @@ const initialiseHighlighter = async (container) => {
   const $highlights = $("#highlights");
 
   const getPrediction = (text) => {
-    console.log("Start Prediction", new Date(), new Date().getMilliseconds());
+    if (!startedPrediction) {
+      console.log("Start Prediction", new Date(), new Date().getMilliseconds());
+      startDate = new Date();
+      startedPrediction = true;
+    }
+
     return predict({ model, text });
   };
 
@@ -32,22 +40,25 @@ const initialiseHighlighter = async (container) => {
     var prediction = await getPrediction(text);
     let parsedText = "";
 
-    console.log("Prediction:", prediction);
     prediction.map((element, index) => {
       const { entity, word } = element;
       const originalWord = textArray[index];
 
       if (word === originalWord?.toLowerCase()) {
+        // Strip double space
+        const parsedWord = originalWord.includes("&nbsp;")
+          ? originalWord
+          : `${originalWord} `;
+
         parsedText +=
           entity !== "O"
-            ? `<mark data-entity="${entity}">${originalWord}</mark> `
-            : `${originalWord} `;
+            ? `<mark data-entity="${entity}">${parsedWord}</mark> `
+            : `${parsedWord}`;
       }
       return element;
     });
 
     const parsedTextRegex = parsedText
-      .replace(postcodeRegex, '<mark data-entity="I-LOC">$&</mark>')
       .replace(creditCardRegex, '<mark data-entity="B-PII">$&</mark>')
       .replace(phoneNumberRegex, '<mark data-entity="B-PII">$&</mark>');
 
@@ -71,10 +82,27 @@ const initialiseHighlighter = async (container) => {
     await getNestedText($highlights);
 
     // Get all element with GDPR attribute and apply highilight
-    $("#highlights [data-gdpr]").each(function () {
-      const text = $(this).text();
-      applyHighlights(text).then((textEdited) => $(this).html(textEdited));
+    $("#highlights [data-gdpr]").each(async function () {
+      const text = $(this).html();
+      await applyHighlights(text).then((textEdited) => {
+        console.log("textEdited", text, textEdited);
+        return $(this).html(textEdited);
+      });
     });
+    startedPrediction = false;
+    endDate = new Date();
+    console.log("End Prediction", new Date(), new Date().getMilliseconds());
+    console.log(
+      "Predicion performed in:",
+      endDate.getTime() - startDate.getTime()
+    );
+    $("#highlights").removeClass("hide");
+    $("#extensionWatchingIconAbsolute").removeClass("loading");
+  };
+
+  const hideHighlights = () => {
+    $("#extensionWatchingIconAbsolute").addClass("loading");
+    $("#highlights").addClass("hide");
   };
 
   function bindEvents() {
@@ -86,6 +114,10 @@ const initialiseHighlighter = async (container) => {
     // Add new EventListener
     $textarea.on({
       input: debounce(handleInput, 1500),
+    });
+
+    $textarea.on({
+      input: hideHighlights,
     });
 
     window.unbindTexareaEvent = () =>
