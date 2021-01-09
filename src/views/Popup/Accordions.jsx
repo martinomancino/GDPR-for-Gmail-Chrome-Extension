@@ -78,15 +78,30 @@ const Accordions = () => {
             <div>
               <b>Personal names:</b>{" "}
               <mark data-entity="B-PER">
-                Name Surname, Locations, Business Names,{" "}
+                Name Surname, Locations, Business Names, emails{" "}
               </mark>
             </div>
             <div>
               <b>Sensitive data: </b>{" "}
               <mark data-entity="B-PII">
-                Phone Number, Credit Card Number, Medical Condition
+                Phone Numbers, Credit Card Numbers, Medical Conditions
               </mark>
             </div>
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2a-content"
+          id="panel2a-header"
+        >
+          <Typography className={classes.heading}>Limitations</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            This prototype has been tested only on new emails and not on reply
+            emails.
           </Typography>
         </AccordionDetails>
       </Accordion>

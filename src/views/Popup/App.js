@@ -13,6 +13,8 @@ const cookieName = "gdpr-for-gmail-enabled";
 let gdprHighlighterEnabled;
 const containerSelector = ".Ar.Au";
 const container = $(containerSelector);
+const feedbackQuestionnaireLink =
+  "https://www.surveymonkey.com/r/GDPR-for-Gmail-feedback";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -78,6 +80,13 @@ function realodExtension() {
   chrome.runtime.sendMessage({ action: "reload" });
 }
 
+function openInNewTab(href) {
+  Object.assign(document.createElement("a"), {
+    target: "_blank",
+    href: href,
+  }).click();
+}
+
 function App() {
   const [checked, setChecked] = React.useState(gdprHighlighterEnabled);
   const classes = useStyles();
@@ -141,7 +150,12 @@ function App() {
             Check email
           </Button>
         )}
-        <Button className={classes.margin} variant="outlined" color="primary">
+        <Button
+          className={classes.margin}
+          variant="outlined"
+          color="primary"
+          onClick={() => openInNewTab(feedbackQuestionnaireLink)}
+        >
           Leave Feedback
         </Button>
       </header>
