@@ -20,7 +20,6 @@ function checkComposeEmailOpened() {
   const textarea = $(textAreaSelector).length > 0;
 
   if (container && textarea && !initialised && isExtentionEnabled) {
-    console.log("Inside IF", initialised);
     initialiseHighlighter($(containerSelector));
     initialised = true;
     stopCheck();

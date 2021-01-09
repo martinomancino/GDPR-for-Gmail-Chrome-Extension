@@ -12,7 +12,7 @@ export async function loadGraphModel() {
   return graphModel;
 }
 
-export async function predict({ model, text }) {
+export function predict({ model, text }) {
   const { inputIds, inputMask } = bertTokenizer.convertSingleExample(text);
 
   const result = tf.tidy(() => {
@@ -26,9 +26,7 @@ export async function predict({ model, text }) {
     });
   });
 
-  const results = await parsePredictionResults(result, inputIds);
-  console.log("End Prediction", new Date(), new Date().getMilliseconds());
-  return results;
+  return parsePredictionResults(result, inputIds);
 }
 
 const reconcileWord = (tokens, index) => {
