@@ -100,8 +100,11 @@ const Accordions = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            This prototype has been tested only on new emails and not on reply
-            emails.
+            This prototype has been tested only:
+            <ul className="list">
+              <li>On UK data</li>
+              <li>New emails and not on reply emails</li>
+            </ul>
           </Typography>
         </AccordionDetails>
       </Accordion>
