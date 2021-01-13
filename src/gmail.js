@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import initialiseHighlighter from "./highlighter";
 
 const containerSelector = ".Ar.Au";
-const textAreaSelector = ".AD .iN .Am.Al";
+const textAreaSelector = ".iN .Am.Al";
 let initialised = false;
 
 let isExtentionEnabled = Cookies.get("gdpr-for-gmail-enabled")
