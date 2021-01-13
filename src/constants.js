@@ -16,11 +16,10 @@ const tagsMap = [
 ];
 
 // ISSUE: phone numbers and postcode matches iban as well
-const ibanRegex = /(?:IT|SM)\d{2}[A-Z]\d{22}|CY\d{2}[A-Z]\d{23}|NL\d{2}[A-Z]{4}\d{10}|LV\d{2}[A-Z]{4}\d{13}|(?:BG|BH|GB|IE)\d{2}[A-Z]{4}\d{14}|GI\d{2}[A-Z]{4}\d{15}|RO\d{2}[A-Z]{4}\d{16}|KW\d{2}[A-Z]{4}\d{22}|MT\d{2}[A-Z]{4}\d{23}|NO\d{13}|(?:DK|FI|GL|FO)\d{16}|MK\d{17}|(?:AT|EE|KZ|LU|XK)\d{18}|(?:BA|HR|LI|CH|CR)\d{19}|(?:GE|DE|LT|ME|RS)\d{20}|IL\d{21}|(?:AD|CZ|ES|MD|SA)\d{22}|PT\d{23}|(?:BE|IS)\d{24}|(?:FR|MR|MC)\d{25}|(?:AL|DO|LB|PL)\d{26}|(?:AZ|HU)\d{27}|(?:GR|MU)\d{28}$/g;
-const creditCardRegex = /\b(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})\b/g;
+const ibanRegex = /\b[A-Z]{2}[0-9]{2}(?:[ ]?[0-9, A-Z]{4}){3,7}(?!(?:[ ]?[0-9]){3})(?:[ ]?[0-9]{1,2})?\b/g;
+const creditCardRegex = /(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/g;
+const phoneNumberRegex = /((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,12})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4}((?!<mark).))$/g;
 const postcodeRegex = /(?:[A-Za-z]\d ?\d[A-Za-z]{2})|(?:[A-Za-z][A-Za-z\d]\d ?\d[A-Za-z]{2})|(?:[A-Za-z]{2}\d{2} ?\d[A-Za-z]{2})|(?:[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]{2})|(?:[A-Za-z]{2}\d[A-Za-z] ?\d[A-Za-z]{2})$/g;
-const phoneNumberRegex = /(\(?(0|\+44\s*)\d{4}\)?\s*\d{6}\s*)|(\s*\(?0\d{3}\)?\s*\d{3}\s*\d{4})$/g;
-const emailRegex = /\b\S+@\S+\.\S+\b/g;
 
 const tokenBlacklist = ["[SEP]", "[CLS]", "[PAD]"];
 
@@ -76,6 +75,14 @@ const highlighterCssInjection = `<style id="cssInjection">#backdrop {
   transition: transform 1s;
 }
 
+.HM .Ar {
+  position: relative;
+}
+
+.HM .Ar #backdrop {
+  top: 0px;
+}
+
 #highlights,
 #highlights *,
 #highlights font {
@@ -115,8 +122,6 @@ mark[data-entity="B-PER"],
 mark[data-entity="I-PER"],
 mark[data-entity="B-LOC"],
 mark[data-entity="I-LOC"],
-mark[data-entity="B-MISC"],
-mark[data-entity="I-MISC"],
 mark[data-entity="B-ORG"],
 mark[data-entity="I-ORG"] {
   border-color: rgb(62, 142, 247);
@@ -127,12 +132,15 @@ mark[data-entity="B-PII"],
 mark[data-entity="I-PII"],
 mark[data-entity="B-DIS"],
 mark[data-entity="I-DIS"],
+mark[data-entity="E-DIS"],
 mark[data-entity="S-DIS"] {
   border-color: rgb(255, 6, 6);
   background-color: rgba(240, 74, 74, 0.3);
 }
 
-mark[data-entity="O-DOCSTART-"] {
+mark[data-entity="O-DOCSTART-"], 
+mark[data-entity="B-MISC"],
+mark[data-entity="I-MISC"] {
   border-color: transparent;
   background-color: transparent;
 }
@@ -159,10 +167,9 @@ mark[data-entity="O-DOCSTART-"] {
 
 export {
   ibanRegex,
-  postcodeRegex,
   phoneNumberRegex,
   creditCardRegex,
-  emailRegex,
+  postcodeRegex,
   tokenBlacklist,
   tagsMap,
   highlighterHtmlInjection,
