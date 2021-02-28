@@ -15,13 +15,15 @@ const tagsMap = [
   "S-DIS",
 ];
 
-// ISSUE: phone numbers and postcode matches iban as well
 const ibanRegex = /\b[A-Z]{2}[0-9]{2}(?:[ ]?[0-9, A-Z]{4}){3,7}(?!(?:[ ]?[0-9]){3})(?:[ ]?[0-9]{1,2})?\b/g;
-const creditCardRegex = /(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/g;
-const phoneNumberRegex = /((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,12})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4}((?!<mark).))$/g;
+const creditCardRegex = /\b(?:[ |-]?[0-9]{3,4}){4}\b/g;
+const phoneNumberRegex = /\b((\(?0\d{4}\)?\s?\d{3}\s?\d{3})|(\(?0\d{3}\)?\s?\d{3}\s?\d{4})|(\(?0\d{2}\)?\s?\d{4}\s?\d{4}))(\s?\(\d{4}|\d{3})?|((\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3})|((((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\(\d{4}|\d{3}))\b/g;
 const postcodeRegex = /(?:[A-Za-z]\d ?\d[A-Za-z]{2})|(?:[A-Za-z][A-Za-z\d]\d ?\d[A-Za-z]{2})|(?:[A-Za-z]{2}\d{2} ?\d[A-Za-z]{2})|(?:[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]{2})|(?:[A-Za-z]{2}\d[A-Za-z] ?\d[A-Za-z]{2})$/g;
 
 const tokenBlacklist = ["[SEP]", "[CLS]", "[PAD]"];
+
+const gmailContainerSelector = ".Ar.Au";
+const gmailTextAreaSelector = ".iN .Am.Al";
 
 const highlighterHtmlInjection = `<div id="backdrop">
 <div id="highlights" class="Am Al"></div>
@@ -123,13 +125,13 @@ mark[data-entity="I-PER"],
 mark[data-entity="B-LOC"],
 mark[data-entity="I-LOC"],
 mark[data-entity="B-ORG"],
-mark[data-entity="I-ORG"] {
+mark[data-entity="I-ORG"],
+mark[data-entity="B-PII"],
+mark[data-entity="I-PII"] {
   border-color: rgb(62, 142, 247);
   background-color: rgba(62, 142, 247, 0.3);
 }
 
-mark[data-entity="B-PII"],
-mark[data-entity="I-PII"],
 mark[data-entity="B-DIS"],
 mark[data-entity="I-DIS"],
 mark[data-entity="E-DIS"],
@@ -174,4 +176,6 @@ export {
   tagsMap,
   highlighterHtmlInjection,
   highlighterCssInjection,
+  gmailContainerSelector,
+  gmailTextAreaSelector,
 };

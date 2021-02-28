@@ -21,7 +21,7 @@ const Accordions = () => {
   const classes = useStyles();
 
   return (
-    <div className="accordions">
+    <div id="accordions" className="accordions">
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -54,7 +54,7 @@ const Accordions = () => {
               <li>
                 The protected data will be{" "}
                 <mark data-entity="B-PER">highlighted</mark> with{" "}
-                <mark data-entity="B-PII">different colours</mark> depending on
+                <mark data-entity="B-DIS">different colours</mark> depending on
                 the type of data as described in the colours legend below
               </li>
               <li>
@@ -76,16 +76,15 @@ const Accordions = () => {
         <AccordionDetails>
           <Typography>
             <div>
-              <b>Personal names:</b>{" "}
+              <b>Personal data:</b>{" "}
               <mark data-entity="B-PER">
-                Name Surname, Locations, Business Names, emails{" "}
+                Name, Surname, Locations, Business Names, Emails, Phone Numbers,
+                Credit Card Numbers, IBAN{" "}
               </mark>
             </div>
             <div>
               <b>Sensitive data: </b>{" "}
-              <mark data-entity="B-PII">
-                Phone Numbers, Credit Card Numbers, Medical Conditions
-              </mark>
+              <mark data-entity="B-DIS">Medical Conditions</mark>
             </div>
           </Typography>
         </AccordionDetails>

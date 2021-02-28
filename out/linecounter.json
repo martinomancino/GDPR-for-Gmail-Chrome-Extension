@@ -1,0 +1,767 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.7",
+    "workspace": "/Users/martino.mancino/Documents/Dissertation/GdprForGmail",
+    "linecount": [
+        {
+            "version": "0.2.7",
+            "counttime": "2021-01-28 09:23:15",
+            "filesum": 106,
+            "codesum": 58389,
+            "commentsum": 785,
+            "blanksum": 5339,
+            "statistics": {
+                ".js": {
+                    "code": 31544,
+                    "comment": 176,
+                    "blank": 156
+                },
+                ".snap": {
+                    "code": 7,
+                    "comment": 1,
+                    "blank": 1
+                },
+                ".jsx": {
+                    "code": 110,
+                    "comment": 0,
+                    "blank": 4
+                },
+                ".ts": {
+                    "code": 2144,
+                    "comment": 25,
+                    "blank": 42
+                },
+                ".css": {
+                    "code": 297,
+                    "comment": 10,
+                    "blank": 26
+                },
+                ".info": {
+                    "code": 261,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".xml": {
+                    "code": 135,
+                    "comment": 0,
+                    "blank": 0
+                },
+                "": {
+                    "code": 23,
+                    "comment": 0,
+                    "blank": 4
+                },
+                ".json": {
+                    "code": 435,
+                    "comment": 0,
+                    "blank": 6
+                },
+                ".md": {
+                    "code": 32,
+                    "comment": 11,
+                    "blank": 28
+                },
+                ".local": {
+                    "code": 1,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".html": {
+                    "code": 1836,
+                    "comment": 13,
+                    "blank": 80
+                },
+                ".map": {
+                    "code": 5,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".txt": {
+                    "code": 0,
+                    "comment": 482,
+                    "blank": 42
+                },
+                ".lock": {
+                    "code": 10710,
+                    "comment": 33,
+                    "blank": 2458
+                },
+                ".log": {
+                    "code": 10849,
+                    "comment": 34,
+                    "blank": 2492
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": ".env.local"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": ".eslintcache"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": ".gitignore"
+                },
+                {
+                    "blank": 0,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "build/asset-manifest.json"
+                },
+                {
+                    "filename": "build/icons/badge-white.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icons/icon-128x128.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icons/icon-48x48.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icons/loading-icon.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "build/manifest.json"
+                },
+                {
+                    "filename": "build/model/group1-shard10of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/model/group1-shard11of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/model/group1-shard1of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/model/group1-shard2of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/model/group1-shard3of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/model/group1-shard4of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/model/group1-shard5of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/model/group1-shard6of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/model/group1-shard7of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/model/group1-shard8of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/model/group1-shard9of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "build/model/model.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "build/popup.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "build/static/css/popup.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "build/static/css/popup.css.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "build/static/js/background.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "build/static/js/background.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 3,
+                    "filename": "build/static/js/gmail.js"
+                },
+                {
+                    "blank": 17,
+                    "code": 0,
+                    "comment": 203,
+                    "filename": "build/static/js/gmail.js.LICENSE.txt"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "build/static/js/gmail.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 3,
+                    "filename": "build/static/js/highlighter.js"
+                },
+                {
+                    "blank": 16,
+                    "code": 0,
+                    "comment": 196,
+                    "filename": "build/static/js/highlighter.js.LICENSE.txt"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "build/static/js/highlighter.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 3,
+                    "filename": "build/static/js/popup.js"
+                },
+                {
+                    "blank": 9,
+                    "code": 0,
+                    "comment": 83,
+                    "filename": "build/static/js/popup.js.LICENSE.txt"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "build/static/js/popup.js.map"
+                },
+                {
+                    "blank": 9,
+                    "code": 80,
+                    "comment": 17,
+                    "filename": "config-overrides.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 135,
+                    "comment": 0,
+                    "filename": "coverage/clover.xml"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "coverage/coverage-final.json"
+                },
+                {
+                    "blank": 12,
+                    "code": 203,
+                    "comment": 9,
+                    "filename": "coverage/lcov-report/base.css"
+                },
+                {
+                    "blank": 13,
+                    "code": 60,
+                    "comment": 13,
+                    "filename": "coverage/lcov-report/block-navigation.js"
+                },
+                {
+                    "filename": "coverage/lcov-report/favicon.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 14,
+                    "code": 111,
+                    "comment": 0,
+                    "filename": "coverage/lcov-report/index.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "coverage/lcov-report/prettify.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "coverage/lcov-report/prettify.js"
+                },
+                {
+                    "filename": "coverage/lcov-report/sort-arrow-sprite.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 12,
+                    "code": 142,
+                    "comment": 16,
+                    "filename": "coverage/lcov-report/sorter.js"
+                },
+                {
+                    "blank": 13,
+                    "code": 423,
+                    "comment": 0,
+                    "filename": "coverage/lcov-report/src/highlighter.js.html"
+                },
+                {
+                    "blank": 14,
+                    "code": 111,
+                    "comment": 0,
+                    "filename": "coverage/lcov-report/src/index.html"
+                },
+                {
+                    "blank": 13,
+                    "code": 324,
+                    "comment": 0,
+                    "filename": "coverage/lcov-report/src/model.js.html"
+                },
+                {
+                    "blank": 13,
+                    "code": 567,
+                    "comment": 0,
+                    "filename": "coverage/lcov-report/src/views/Popup/App.js.html"
+                },
+                {
+                    "blank": 13,
+                    "code": 97,
+                    "comment": 0,
+                    "filename": "coverage/lcov-report/src/views/Popup/index.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 261,
+                    "comment": 0,
+                    "filename": "coverage/lcov.info"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "cypress.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "cypress/fixtures/example.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "cypress/fixtures/profile.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 232,
+                    "comment": 0,
+                    "filename": "cypress/fixtures/users.json"
+                },
+                {
+                    "blank": 7,
+                    "code": 17,
+                    "comment": 38,
+                    "filename": "cypress/integration/chromeExtension.spec.js"
+                },
+                {
+                    "blank": 11,
+                    "code": 28,
+                    "comment": 19,
+                    "filename": "cypress/plugins/index.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 189,
+                    "comment": 0,
+                    "filename": "cypress/plugins/mocks/gmail.html"
+                },
+                {
+                    "blank": 1,
+                    "code": 0,
+                    "comment": 28,
+                    "filename": "cypress/support/commands.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 1,
+                    "comment": 17,
+                    "filename": "cypress/support/index.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "LICENSE"
+                },
+                {
+                    "blank": 2,
+                    "code": 65,
+                    "comment": 0,
+                    "filename": "package.json"
+                },
+                {
+                    "filename": "public/icons/badge-white.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public/icons/icon-128x128.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public/icons/icon-48x48.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public/icons/loading-icon.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 13,
+                    "comment": 13,
+                    "filename": "public/index.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "public/manifest.json"
+                },
+                {
+                    "filename": "public/model/group1-shard10of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public/model/group1-shard11of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public/model/group1-shard1of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public/model/group1-shard2of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public/model/group1-shard3of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public/model/group1-shard4of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public/model/group1-shard5of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public/model/group1-shard6of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public/model/group1-shard7of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public/model/group1-shard8of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public/model/group1-shard9of11.bin",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public/model/model.json"
+                },
+                {
+                    "blank": 28,
+                    "code": 32,
+                    "comment": 11,
+                    "filename": "README.md"
+                },
+                {
+                    "blank": 4,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "src/background.js"
+                },
+                {
+                    "blank": 19,
+                    "code": 148,
+                    "comment": 0,
+                    "filename": "src/constants.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 24,
+                    "comment": 1,
+                    "filename": "src/gmail.js"
+                },
+                {
+                    "blank": 20,
+                    "code": 94,
+                    "comment": 5,
+                    "filename": "src/highlighter.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "src/index.js"
+                },
+                {
+                    "blank": 18,
+                    "code": 67,
+                    "comment": 1,
+                    "filename": "src/model.js"
+                },
+                {
+                    "blank": 10,
+                    "code": 36,
+                    "comment": 2,
+                    "filename": "src/pseudocode.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 119,
+                    "comment": 2,
+                    "filename": "src/pseudoData.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 1,
+                    "filename": "src/react-app-env.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "src/tokenizer/index.ts"
+                },
+                {
+                    "blank": 19,
+                    "code": 2011,
+                    "comment": 16,
+                    "filename": "src/tokenizer/tokenizer.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 30525,
+                    "comment": 0,
+                    "filename": "src/tokenizer/vocab.js"
+                },
+                {
+                    "blank": 23,
+                    "code": 131,
+                    "comment": 8,
+                    "filename": "src/tokenizer/wordpiecetokenizer.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 7,
+                    "comment": 1,
+                    "filename": "src/views/Popup/__tests__/__snapshots__/App.test.js.snap"
+                },
+                {
+                    "blank": 2,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "src/views/Popup/__tests__/Accordions.test.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "src/views/Popup/__tests__/App.test.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 110,
+                    "comment": 0,
+                    "filename": "src/views/Popup/Accordions.jsx"
+                },
+                {
+                    "blank": 14,
+                    "code": 92,
+                    "comment": 0,
+                    "filename": "src/views/Popup/App.css"
+                },
+                {
+                    "blank": 16,
+                    "code": 135,
+                    "comment": 6,
+                    "filename": "src/views/Popup/App.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 24,
+                    "comment": 0,
+                    "filename": "tsconfig copy.json"
+                },
+                {
+                    "blank": 2,
+                    "code": 24,
+                    "comment": 0,
+                    "filename": "tsconfig.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "tsconfig.paths.json"
+                },
+                {
+                    "blank": 2492,
+                    "code": 10849,
+                    "comment": 34,
+                    "filename": "yarn-error.log"
+                },
+                {
+                    "blank": 2458,
+                    "code": 10710,
+                    "comment": 33,
+                    "filename": "yarn.lock"
+                }
+            ]
+        }
+    ]
+}

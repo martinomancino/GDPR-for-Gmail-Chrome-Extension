@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "0.1.2",
+  "version": "0.1.4",
   "name": "GDPR for Gmail",
   "description": "GDPR for Gmail highlights personal and sensitive data potentially protected by the currect GDPR regulation.",
   "icons": {

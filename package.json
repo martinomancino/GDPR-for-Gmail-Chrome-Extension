@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@tensorflow/tfjs": "^2.7.0",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
     "@types/chrome": "^0.0.126",
     "debounce": "^1.2.0",
     "jquery": "^3.5.1",
@@ -50,9 +52,16 @@
   "devDependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@types/jquery": "^3.5.5",
     "comlink": "^4.3.0",
+    "cypress": "^6.2.1",
+    "cypress-browser-extension-plugin": "^0.1.0",
+    "cypress-social-logins": "^1.9.3",
+    "express": "^4.17.1",
     "js-cookie": "^2.2.1",
+    "path": "^0.12.7",
+    "self-signed-https": "^1.0.5",
     "worker-loader": "^3.0.7"
   }
 }

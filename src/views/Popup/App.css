@@ -14,16 +14,22 @@ code {
 }
 
 .App {
-  margin-bottom: 40px;
-}
-
-.App-header {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  margin-bottom: 40px;
+}
+
+.App header,
+.App main,
+.App footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {
@@ -33,6 +39,7 @@ code {
 .switch,
 .accordions {
   margin-bottom: 30px;
+  align-self: center;
 }
 
 .accordions mark {
@@ -83,15 +90,17 @@ mark[data-entity="I-LOC"],
 mark[data-entity="B-MISC"],
 mark[data-entity="I-MISC"],
 mark[data-entity="B-ORG"],
-mark[data-entity="I-ORG"] {
+mark[data-entity="I-ORG"],
+mark[data-entity="B-PII"],
+mark[data-entity="I-PII"] {
   border-color: rgb(62, 142, 247);
   background-color: rgba(62, 142, 247, 0.3);
 }
 
-mark[data-entity="B-PII"],
-mark[data-entity="I-PII"],
 mark[data-entity="B-DIS"],
-mark[data-entity="I-DIS"] {
+mark[data-entity="I-DIS"],
+mark[data-entity="E-DIS"],
+mark[data-entity="S-DIS"] {
   border-color: rgb(255, 6, 6);
   background-color: rgba(240, 74, 74, 0.3);
 }

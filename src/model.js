@@ -3,8 +3,13 @@ import { BertTokenizer } from "./tokenizer";
 import { tagsMap, tokenBlacklist } from "./constants";
 import { sortBy } from "lodash";
 
-const bertTokenizer = new BertTokenizer(true);
+export const bertTokenizer = new BertTokenizer(true);
 
+/**
+ * loadGraphModel
+ *
+ * Loads the ML graph model in the memory
+ */
 export async function loadGraphModel() {
   const modelUrl = chrome.runtime.getURL("model/model.json");
   const graphModel = await tf.loadGraphModel(modelUrl);
@@ -12,6 +17,11 @@ export async function loadGraphModel() {
   return graphModel;
 }
 
+/**
+ *
+ * @param {Object} model Graph ML model
+ * @param {String} text Text to run the prediction on
+ */
 export function predict({ model, text }) {
   const { inputIds, inputMask } = bertTokenizer.convertSingleExample(text);
 
@@ -29,7 +39,13 @@ export function predict({ model, text }) {
   return parsePredictionResults(result, inputIds);
 }
 
-const reconcileWord = (tokens, index) => {
+/**
+ * reconcileWord
+ *
+ * @param {Array} tokens
+ * @param {Int} index
+ */
+export const reconcileWord = (tokens, index) => {
   let word = tokens[index];
 
   if (!word) return word;
@@ -50,7 +66,13 @@ const reconcileWord = (tokens, index) => {
   return word;
 };
 
-const parsePredictionResults = async (results, inputIds) => {
+/**
+ * parsePredictionResults
+ *
+ * @param {Array} results Model prediction in a multidimensional array
+ * @param {*} inputIds
+ */
+export const parsePredictionResults = async (results, inputIds) => {
   const resultsIndexed = await tf.softmax(results).squeeze().array();
   const tokens = bertTokenizer.convertIdsToTokens(inputIds);
 
@@ -68,6 +90,7 @@ const parsePredictionResults = async (results, inputIds) => {
         word,
       };
     });
+    console.log("unsorted", unsorted);
 
     const sorted = sortBy(unsorted, "score");
     return sorted[sorted.length - 1];

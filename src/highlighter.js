@@ -5,14 +5,18 @@ import { predict, loadGraphModel } from "./model";
 import {
   phoneNumberRegex,
   creditCardRegex,
+  ibanRegex,
+  postcodeRegex,
   highlighterHtmlInjection,
   highlighterCssInjection,
 } from "./constants";
 
-let startedPrediction = false;
-let startDate;
-let endDate;
-
+/**
+ * initialiseHighlighter
+ *
+ * @param {HTMLElement} container     Wrapper container of the email body
+ * @param {String} textAreaSelector   Email textarea selector
+ */
 const initialiseHighlighter = async (container) => {
   const model = await loadGraphModel();
 
@@ -21,20 +25,19 @@ const initialiseHighlighter = async (container) => {
     container.append(highlighterHtmlInjection);
   }
 
-  const textAreaSelector = ".AD .iN .Am.Al";
+  const textAreaSelector = ".iN .Am.Al";
   const $textarea = $(textAreaSelector);
   const $highlights = $("#highlights");
 
   const getPrediction = (text) => {
-    if (!startedPrediction) {
-      console.log("Start Prediction", new Date(), new Date().getMilliseconds());
-      startDate = new Date();
-      startedPrediction = true;
-    }
-
     return predict({ model, text });
   };
 
+  /**
+   * applyHighlights
+   *
+   * @param {String} text Text to run the prediction on
+   */
   const applyHighlights = async (text) => {
     const textArray = text.split(" ");
     var prediction = await getPrediction(text);
@@ -60,42 +63,41 @@ const initialiseHighlighter = async (container) => {
 
     const parsedTextRegex = parsedText
       .replace(creditCardRegex, '<mark data-entity="B-PII">$&</mark>')
-      .replace(phoneNumberRegex, '<mark data-entity="B-PII">$&</mark>');
+      .replace(ibanRegex, '<mark data-entity="B-PII">$&</mark>')
+      .replace(phoneNumberRegex, '<mark data-entity="B-PII">$&</mark>')
+      .replace(postcodeRegex, '<mark data-entity="B-LOC">$&</mark>');
 
     return parsedTextRegex;
   };
 
-  async function getNestedText(element) {
+  /**
+   * wrapTextToEvaluate
+   *
+   * @param {HTMLElement} element Copy of the textarea element
+   */
+  async function wrapTextToEvaluate(element) {
     $(element)
       .contents()
       .each(function () {
         if (this.nodeType === Node.TEXT_NODE && $(this).text().length > 1) {
           $(this).wrap('<span data-gdpr="true"></span>');
         } else {
-          getNestedText($(this));
+          wrapTextToEvaluate($(this));
         }
       });
   }
 
   const handleInput = async () => {
     $highlights.html($textarea.html());
-    await getNestedText($highlights);
+    await wrapTextToEvaluate($highlights);
 
     // Get all element with GDPR attribute and apply highilight
     $("#highlights [data-gdpr]").each(async function () {
       const text = $(this).html();
       await applyHighlights(text).then((textEdited) => {
-        console.log("textEdited", text, textEdited);
         return $(this).html(textEdited);
       });
     });
-    startedPrediction = false;
-    endDate = new Date();
-    console.log("End Prediction", new Date(), new Date().getMilliseconds());
-    console.log(
-      "Predicion performed in:",
-      endDate.getTime() - startDate.getTime()
-    );
     $("#highlights").removeClass("hide");
     $("#extensionWatchingIconAbsolute").removeClass("loading");
   };

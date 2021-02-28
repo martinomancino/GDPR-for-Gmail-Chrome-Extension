@@ -12,9 +12,6 @@ function loadInitialiser() {
     if (url.includes(GMAIL_URL)) {
       chrome.tabs.executeScript(null, { file: "static/js/gmail.js" });
       chrome.browserAction.setIcon({ path: "/icons/icon-48x48.png" });
-      chrome.browserAction.setBadgeBackgroundColor({ color: "#002a6d" });
-    } else {
-      chrome.browserAction.setIcon({ path: "/icons/icon-48x48-bw.png" });
     }
   });
 }

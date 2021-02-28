@@ -5,16 +5,16 @@ import FormGroup from "@material-ui/core/FormGroup";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Button from "@material-ui/core/Button";
+import Alert from "@material-ui/lab/Alert";
 import Accordions from "./Accordions";
 import "./App.css";
 
-let currentDomain = "";
-const cookieName = "gdpr-for-gmail-enabled";
 let gdprHighlighterEnabled;
+let currentDomain = "";
+const GMAIL_URL = "mail.google.com";
+const cookieName = "gdpr-for-gmail-enabled";
 const containerSelector = ".Ar.Au";
 const container = $(containerSelector);
-const feedbackQuestionnaireLink =
-  "https://www.surveymonkey.com/r/GDPR-for-Gmail-feedback";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -25,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
 /**
  *  sendCookie
  *
- *  @param {String} featureName   feature flag name
- *  @param {String} expires       cookie expiration time in seconds
+ *  @param {String} featureName   Feature flag name
+ *  @param {String} expires       Cookie expiration time in seconds
  */
 function sendCookie(value) {
   var now = new Date();
@@ -46,6 +46,11 @@ function sendCookie(value) {
   });
 }
 
+/**
+ * readCookie
+ *
+ * @param {Function} cb Callback
+ */
 function readCookie(cb) {
   var activeTab;
 
@@ -59,18 +64,20 @@ function readCookie(cb) {
       currentDomain =
         activeTab && arrayOfTabs[0].url ? arrayOfTabs[0].url : currentDomain;
 
-      chrome.cookies.get(
-        {
-          url: currentDomain,
-          name: cookieName,
-        },
-        function (cookie) {
-          gdprHighlighterEnabled =
-            cookie && cookie?.value ? JSON.parse(cookie?.value) : false;
+      if (currentDomain.includes(GMAIL_URL)) {
+        chrome.cookies.get(
+          {
+            url: currentDomain,
+            name: cookieName,
+          },
+          function (cookie) {
+            gdprHighlighterEnabled =
+              cookie && cookie?.value ? JSON.parse(cookie?.value) : false;
 
-          return cb(gdprHighlighterEnabled);
-        }
-      );
+            return cb(gdprHighlighterEnabled);
+          }
+        );
+      }
     }
   );
 }
@@ -80,17 +87,11 @@ function realodExtension() {
   chrome.runtime.sendMessage({ action: "reload" });
 }
 
-function openInNewTab(href) {
-  Object.assign(document.createElement("a"), {
-    target: "_blank",
-    href: href,
-  }).click();
-}
-
 function App() {
   const [checked, setChecked] = React.useState(gdprHighlighterEnabled);
   const classes = useStyles();
   const showResetButton = checked && container;
+  const cookieUnavailable = checked === null || checked === undefined;
 
   const toggleChecked = () => {
     setChecked((prev) => !prev);
@@ -109,38 +110,41 @@ function App() {
     }
   }, [checked]);
 
-  if (checked === null || checked === undefined) {
-    return (
-      <img
-        className="badge"
-        src="/icons/badge-white.png"
-        alt="GDPR highlighter logo"
-      />
-    );
-  }
-
   return (
     <div className="App">
       <header className="App-header">
         <img
+          id="badgeImage"
           className="badge"
           src="/icons/badge-white.png"
           alt="GDPR highlighter logo"
         />
-        <FormGroup className="switch">
-          <FormControlLabel
-            control={
-              <Switch
-                checked={checked}
-                onChange={toggleChecked}
-                color="primary"
+      </header>
+      <main>
+        {cookieUnavailable ? (
+          <Alert severity="error">
+            This extension can be used only in Gmail
+          </Alert>
+        ) : (
+          <>
+            <FormGroup className="switch">
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={checked}
+                    onChange={toggleChecked}
+                    color="primary"
+                  />
+                }
+                label="Enabled"
               />
-            }
-            label="Enabled"
-          />
-        </FormGroup>
-        <Accordions />
-        {showResetButton && (
+            </FormGroup>
+            <Accordions />
+          </>
+        )}
+      </main>
+      {showResetButton && (
+        <footer>
           <Button
             className={classes.margin}
             variant="contained"
@@ -149,16 +153,8 @@ function App() {
           >
             Check email
           </Button>
-        )}
-        <Button
-          className={classes.margin}
-          variant="outlined"
-          color="primary"
-          onClick={() => openInNewTab(feedbackQuestionnaireLink)}
-        >
-          Leave Feedback
-        </Button>
-      </header>
+        </footer>
+      )}
     </div>
   );
 }

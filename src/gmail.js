@@ -2,9 +2,8 @@
 import $ from "jquery";
 import Cookies from "js-cookie";
 import initialiseHighlighter from "./highlighter";
+import { gmailContainerSelector, gmailTextAreaSelector } from "./constants";
 
-const containerSelector = ".Ar.Au";
-const textAreaSelector = ".iN .Am.Al";
 let initialised = false;
 
 let isExtentionEnabled = Cookies.get("gdpr-for-gmail-enabled")
@@ -16,11 +15,11 @@ var initialisation = setInterval(() => {
 }, 500);
 
 function checkComposeEmailOpened() {
-  const container = $(containerSelector).length > 0;
-  const textarea = $(textAreaSelector).length > 0;
+  const container = $(gmailContainerSelector).length > 0;
+  const textarea = $(gmailTextAreaSelector).length > 0;
 
   if (container && textarea && !initialised && isExtentionEnabled) {
-    initialiseHighlighter($(containerSelector));
+    initialiseHighlighter($(gmailContainerSelector));
     initialised = true;
     stopCheck();
   }
